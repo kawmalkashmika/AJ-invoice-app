@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 html {
-  padding: 0; margin: 0 auto; width: 600px;
+  padding: 0; margin: 0 auto; width: 100%;
   background: #f2f2f2;
 }
 .header {
-  margin: 20px 0; font-weight: 700; 
+  margin: 20px 0; font-weight: 700;
 }
 textarea, input, #loader {
   font-size: 16px;
