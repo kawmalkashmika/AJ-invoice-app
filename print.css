@@ -1,0 +1,34 @@
+/* (PART A) WHOLE PAGE */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+html { width: 600px; }
+
+/* (PART B) COMPANY */
+#company { display: flex; }
+#cologo { width: 100px; }
+#coinfo { flex-grow: 1; text-align: right; }
+
+/* (PART C) INVOICE */
+#inHead {
+  font-weight: 700; font-size: 22px; color: #bd0f0f;
+  margin: 20px 0;
+}
+#inRow { display: flex; }
+#billto { flex-grow: 1; }
+
+/* (PART D) ITEMS */
+#items { margin: 20px 0; }
+#items .irow {
+  display: grid; grid-template-columns: 80px auto 120px; padding: 10px;
+  border-bottom: 1px solid #d9d9d9;
+}
+#items .ihead { font-weight: 700; }
+#items input { border: 0; }
+
+/* (PART E) TOTALS */
+#totals {
+  margin-top: 20px; padding: 10px;
+  font-weight: 700; text-align: right;
+}

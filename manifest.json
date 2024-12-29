@@ -1,0 +1,14 @@
+{
+  "short_name": "Invoice Generator",
+  "name": "Invoice",
+  "icons": [{
+    "src": "logo.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "start_url": "/invoice.html",
+  "scope": "/",
+  "background_color": "white",
+  "theme_color": "white",
+  "display": "standalone"
+}

@@ -1,0 +1,43 @@
+/* (PART A) ENTIRE PAGE */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+html {
+  padding: 0; margin: 0 auto; width: 600px;
+  background: #f2f2f2;
+}
+.header {
+  margin: 20px 0; font-weight: 700; 
+}
+textarea, input, #loader {
+  font-size: 16px;
+  padding: 10px; margin: 1px; border: 0;
+}
+input[type="button"], input[type="submit"], #loader {
+  color: #fff; background: #3154d5;
+  cursor: pointer;
+}
+
+/* (PART B) INVOICE */
+#inRow { display: flex; }
+#inNum { flex-grow: 1; }
+#inBill { width: 100%; min-height: 100px; }
+
+/* (PART C) ITEMS */
+.irow { display: flex; padding: 3px; }
+.irow .qty { width: 60px; }
+.irow .item { flex-grow: 1; }
+.irow .price { width: 120px; }
+#itemsList .irow { margin-bottom: 5px; background: #e1e1e1; }
+#itemsAdd { margin-top: 10px; background: #d9d9d9; }
+
+/* (PART D) LOAD BUTTON */
+#loader { display: inline-block; }
+#loader input { display: none; }
+
+/* (PART E) CONTROLS */
+#controls {
+  padding: 10px; margin-top: 10px;
+  background: #d9d9d9;
+}

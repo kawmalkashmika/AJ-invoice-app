@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Invoice Generator Demo</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="print.css">
+  </head>
+  <body>
+    <!-- (PART A) YOUR COMPANY -->
+    <div id="company">
+      <img id="cologo" src="Logo.jpg">
+      <div id="coinfo">
+        Company Name<br>
+        Address<br>
+        http://your-site.com<br>
+        Email: jon@doe.com<br>
+        Tel: 12345678
+      </div>
+    </div>
+
+    <!-- (PART B) INVOICE -->
+    <div id="inHead">SALES INVOICE</div>
+    <div id="inRow">
+      <div id="billto"></div>
+      <div id="inData">
+        <div id="inNum"></div>
+        <div id="inDate"></div>
+      </div>
+    </div>
+
+    <!-- (PART C) ITEMS -->
+    <div id="items">
+      <div class="irow ihead">
+        <div>Qty</div> <div>Item</div> <div>Price Each</div>
+      </div>
+    </div>
+
+    <!-- (PART D) TOTALS -->
+    <div id="totals"></div>
+  </body>
+</html>
