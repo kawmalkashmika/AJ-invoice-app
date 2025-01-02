@@ -189,6 +189,7 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
         h1 {
             color: #f9ab07;
@@ -200,6 +201,7 @@
             color: #f9ab07;
             margin-top: 20px;
             font-size: 24px;
+            text-align: center;
         }
         table {
             width: 100%;
@@ -222,40 +224,54 @@
             font-size: 20px;
             font-weight: bold;
         }
-
-        .b-color{
+        .b-color {
             border: 3px solid black;
         }
-        .image{
-            width: 40%;
-            height: 40%;
+        .image {
+            width: 50%;
+            max-width: 150px;
+            height: auto;
             border-radius: 12%;
+            display: block;
+            margin: 0 auto;
+        }
+        .header-info {
+            text-align: right;
+        }
+        .header-info p {
+            margin: 0;
+            font-size: 16px;
+        }
+        .header-info h1 {
+            font-size: 32px;
+            margin: 0;
+        }
+        .header-info h3 {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
 <div class="container b-color">
-
     <div class="row">
-        <div class="col-6"></div>
         <div class="col-6">
-            <img src="../logo.jpg" class="image">
-            <h1>KULJETUSRATKAISUT <br> TRANSPORT SOLUTION</h1><br>
+            <!-- Empty left section for spacing -->
+        </div>
+        <div class="col-6 header-info">
+            <img src="logo.jpg" class="image">
+            <h1>KULJETUSRATKAISUT <br> TRANSPORT SOLUTION</h1>
             <h3>342547-1</h3>
-            <p><strong>laskun numero:</strong> ${document.getElementById("invoiceNumber").value}</p>
-            <p><strong>päivämäärä</strong> ${document.getElementById("invoiceDate").value}</p>
+            <p><strong>Laskun numero:</strong> ${document.getElementById("invoiceNumber").value}</p>
+            <p><strong>Päivämäärä:</strong> ${document.getElementById("invoiceDate").value}</p>
             <p><strong>Asiakkaan nimi:</strong> ${document.getElementById("customerName").value}</p>
         </div>
     </div>
 
-
-
-
     <table>
         <thead>
         <tr>
-            <th>määrä</th>
+            <th>Määrä</th>
             <th>Palvelun nimi</th>
             <th>Yksikköhinta (€)</th>
         </tr>
@@ -276,6 +292,7 @@
 
 </body>
 </html>
+
 
         `;
 
