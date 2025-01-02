@@ -81,12 +81,20 @@
                 </div>
             </div>
         </div>
+        <!-- Print Button -->
+        <div class="row mt-3">
+            <div class="col-12 text-end">
+                <button id="btnPrint" class="btn btn-primary">Print</button>
+            </div>
+        </div>
     </div>
 </div>
+
 <script>
     const tableContainer = document.getElementById("tableContainer");
     const invoiceTable = document.getElementById("invoiceTable");
     const totalAmount = document.getElementById("totalAmount");
+    const btnPrint = document.getElementById("btnPrint");
 
     // Function to update the total amount
     function updateTotal() {
@@ -153,6 +161,48 @@
         // Update the total amount and toggle visibility
         updateTotal();
         toggleTableVisibility();
+    });
+
+    // Print functionality
+    btnPrint.addEventListener("click", function () {
+        const invoiceDetails = `
+            <html>
+                <head>
+                    <title>Invoice</title>
+                </head>
+                <body>
+                    <h1>Invoice</h1>
+                    <p>Invoice Number: ${document.getElementById("invoiceNumber").value}</p>
+                    <p>Date: ${document.getElementById("invoiceDate").value}</p>
+                    <p>Customer Name: ${document.getElementById("customerName").value}</p>
+                    <table border="1" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>Qty</th>
+                                <th>Description</th>
+                                <th>Unit Price (€)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${Array.from(invoiceTable.children).map(row => `
+                                <tr>
+                                    <td>${row.querySelector(".qty").textContent}</td>
+                                    <td>${row.querySelector("td:nth-child(2)").textContent}</td>
+                                    <td>${row.querySelector(".unitPrice").textContent}</td>
+                                </tr>
+                            `).join("")}
+                        </tbody>
+                    </table>
+                    <h3>Total: ${totalAmount.textContent} €</h3>
+                </body>
+            </html>
+        `;
+
+        const printWindow = window.open("", "_blank");
+        printWindow.document.open();
+        printWindow.document.write(invoiceDetails);
+        printWindow.document.close();
+        printWindow.print();
     });
 </script>
 <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
