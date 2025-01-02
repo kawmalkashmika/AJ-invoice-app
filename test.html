@@ -21,15 +21,34 @@
 <body>
 <div class="bg-image d-flex align-items-center justify-content-center">
     <div class="row" style="height: 60% ; border: 2px black solid">
-        <div style="border: 2px black solid" class="col-12"><h1 style="text-align: center">Asanka Transport Solutions Invoice service</h1></div>
-        <div style="border: 2px black solid" class="col-7">cscsc</div>
-        <div style="border: 2px black solid" class="col-5">cscsc</div>
-        <div style="border: 2px black solid" class="col-12">cscsc</div>
-        <div style="border: 2px black solid" class="col-12">cscsc</div>
-        <div style="border: 2px black solid" class="col-3">cscsc</div>
-        <div style="border: 2px black solid" class="col-4">cscsc</div>
-        <div style="border: 2px black solid" class="col-3">cscsc</div>
-        <div style="border: 2px black solid" class="col-2">cscsc</div>
+        <div  class="col-12"><h1 style="text-align: center">Asanka Transport Solutions Invoice service</h1></div>
+        <!--Invoice Number-->
+        <div  class="col-7">
+            <input type="number" placeholder="Invoice Number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+        <!--Invoice Date-->
+        <div  class="col-5">
+            <input id="startDate" class="form-control" type="date" />
+        </div>
+        <!--Customer Name-->
+        <div  class="col-12">
+            <input type="text" placeholder="Customer Name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+
+        <div  class="col-12"><h1 style="text-align: center">Invoice</h1></div>
+
+        <div  class="col-2">
+            <input type="number" placeholder="Qty" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div  class="col-4">
+            <input type="text" placeholder="Description" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div  class="col-4">
+            <input type="number" placeholder="Unit Price" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div  class="col-2">
+            <button type="button" class="btn btn-success">+</button>
+        </div>
     </div>
 </div>
 
