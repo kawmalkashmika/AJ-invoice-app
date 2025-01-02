@@ -15,6 +15,13 @@
             height: 100vh; /* Full-screen height */
             color: white; /* Optional: Make text readable */
         }
+        /* Print specific styles */
+        @media print {
+            body { font-family: Arial, sans-serif; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { padding: 8px 12px; border: 1px solid #ccc; text-align: left; }
+            h3 { margin-top: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -125,7 +132,7 @@
         const unitPrice = document.getElementById("unitPrice").value;
 
         // Validate inputs
-        if (!qty || !desc || !unitPrice || qty <= 0 || unitPrice <= 0) {
+        if (!qty || !desc || !unitPrice || qty <= 0 || unitPrice <= 0 || isNaN(qty) || isNaN(unitPrice)) {
             alert("Please fill in all fields with valid values before adding.");
             return;
         }
@@ -146,10 +153,11 @@
         // Append the row to the table
         invoiceTable.appendChild(row);
 
-        // Clear input fields
+        // Clear input fields and refocus on quantity input
         document.getElementById("qty").value = "";
         document.getElementById("desc").value = "";
         document.getElementById("unitPrice").value = "";
+        document.getElementById("qty").focus();
 
         // Add event listener for the remove button
         row.querySelector(".btnRemove").addEventListener("click", function () {
@@ -169,6 +177,12 @@
             <html>
                 <head>
                     <title>Invoice</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                        th, td { padding: 8px 12px; border: 1px solid #ccc; text-align: left; }
+                        h3 { margin-top: 20px; }
+                    </style>
                 </head>
                 <body>
                     <h1>Invoice</h1>
