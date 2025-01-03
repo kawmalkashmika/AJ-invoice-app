@@ -15,7 +15,6 @@
             height: 100vh; /* Full-screen height */
             color: white; /* Optional: Make text readable */
         }
-        /* Print specific styles */
         @media print {
             body { font-family: Arial, sans-serif; }
             table { width: 100%; border-collapse: collapse; margin-top: 20px; }
@@ -29,10 +28,9 @@
     <div class="container" style="border: 2px black solid; background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 8px;">
         <div class="row mb-3">
             <div class="col-12">
-                <h1 class="text-center">Asanka Transport Solutions Invoice Service</h1>
+                <h1 class="text-center" style="color: black">Asanka Transport Solutions Invoice Service</h1>
             </div>
         </div>
-        <!-- Invoice Number and Date -->
         <div class="row mb-3">
             <div class="col-md-7">
                 <input id="invoiceNumber" type="number" placeholder="Invoice Number" class="form-control" required>
@@ -41,13 +39,11 @@
                 <input id="invoiceDate" type="date" class="form-control">
             </div>
         </div>
-        <!-- Customer Name -->
         <div class="row mb-3">
             <div class="col-12">
                 <input id="customerName" type="text" placeholder="Customer Name" class="form-control" required>
             </div>
         </div>
-        <!-- Item Entry -->
         <div class="row mb-3">
             <div class="col-2">
                 <input type="number" id="qty" placeholder="Qty" class="form-control">
@@ -62,7 +58,6 @@
                 <button type="button" id="btnAdd" class="btn btn-success">+</button>
             </div>
         </div>
-        <!-- Invoice Items Table -->
         <div id="tableContainer" style="display: none;">
             <div class="row">
                 <div class="col-12">
@@ -75,20 +70,16 @@
                             <th>Action</th>
                         </tr>
                         </thead>
-                        <tbody id="invoiceTable">
-                        <!-- Rows will be added here dynamically -->
-                        </tbody>
+                        <tbody id="invoiceTable"></tbody>
                     </table>
                 </div>
             </div>
-            <!-- Total -->
             <div class="row">
                 <div class="col-12 text-end">
-                    <h4>Total: <span id="totalAmount">0.00</span> €</h4>
+                    <h4 style="color: black">Total: <span id="totalAmount">0.00</span> €</h4>
                 </div>
             </div>
         </div>
-        <!-- Print Button -->
         <div class="row mt-3">
             <div class="col-12 text-end">
                 <button id="btnPrint" class="btn btn-primary">Print</button>
@@ -96,14 +87,21 @@
         </div>
     </div>
 </div>
-
 <script>
+    // Preload the logo image
+    const preloadLogo = () => {
+        const img = new Image();
+        img.src = "Logo.jpg"; // Ensure this path matches your actual logo file location
+        img.onload = () => console.log("Logo image preloaded successfully.");
+        img.onerror = () => console.error("Failed to preload logo image.");
+    };
+    preloadLogo();
+
     const tableContainer = document.getElementById("tableContainer");
     const invoiceTable = document.getElementById("invoiceTable");
     const totalAmount = document.getElementById("totalAmount");
     const btnPrint = document.getElementById("btnPrint");
 
-    // Function to update the total amount
     function updateTotal() {
         let total = 0;
         const rows = document.querySelectorAll("#invoiceTable tr");
@@ -115,7 +113,6 @@
         totalAmount.textContent = total.toFixed(2);
     }
 
-    // Toggle table visibility based on rows
     function toggleTableVisibility() {
         if (invoiceTable.children.length > 0) {
             tableContainer.style.display = "block";
@@ -124,23 +121,17 @@
         }
     }
 
-    // Add row functionality
     document.getElementById("btnAdd").addEventListener("click", function () {
-        // Get input values
         const qty = document.getElementById("qty").value;
         const desc = document.getElementById("desc").value;
         const unitPrice = document.getElementById("unitPrice").value;
 
-        // Validate inputs
         if (!qty || !desc || !unitPrice || qty <= 0 || unitPrice <= 0 || isNaN(qty) || isNaN(unitPrice)) {
             alert("Please fill in all fields with valid values before adding.");
             return;
         }
 
-        // Create a new table row
         const row = document.createElement("tr");
-
-        // Add columns to the row
         row.innerHTML = `
             <td class="qty">${qty}</td>
             <td>${desc}</td>
@@ -150,31 +141,25 @@
             </td>
         `;
 
-        // Append the row to the table
         invoiceTable.appendChild(row);
 
-        // Clear input fields and refocus on quantity input
         document.getElementById("qty").value = "";
         document.getElementById("desc").value = "";
         document.getElementById("unitPrice").value = "";
         document.getElementById("qty").focus();
 
-        // Add event listener for the remove button
         row.querySelector(".btnRemove").addEventListener("click", function () {
             invoiceTable.removeChild(row);
             updateTotal();
             toggleTableVisibility();
         });
 
-        // Update the total amount and toggle visibility
         updateTotal();
         toggleTableVisibility();
     });
 
-    // Print functionality
     btnPrint.addEventListener("click", function () {
-        const invoiceDetails = `
-           <!DOCTYPE html>
+        const invoiceDetails = ` <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -345,9 +330,7 @@
 </div>
 
 </body>
-</html>
-
-        `;
+</html>`;
 
         const printWindow = window.open("", "_blank");
         printWindow.document.open();
