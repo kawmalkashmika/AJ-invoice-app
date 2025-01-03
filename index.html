@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Invoice Service</title>
     <style>
@@ -12,8 +10,8 @@
             background-image: url('background.jpg'); /* Replace with your image URL */
             background-size: cover;
             background-position: center;
-            height: 100vh; /* Full-screen height */
-            color: white; /* Optional: Make text readable */
+            height: 100vh;
+            color: white;
         }
         @media print {
             body { font-family: Arial, sans-serif; }
@@ -87,20 +85,13 @@
         </div>
     </div>
 </div>
+<div id="printSection" style="display: none;"></div> <!-- Hidden div for print content -->
 <script>
-    // Preload the logo image
-    const preloadLogo = () => {
-        const img = new Image();
-        img.src = "Logo.jpg"; // Ensure this path matches your actual logo file location
-        img.onload = () => console.log("Logo image preloaded successfully.");
-        img.onerror = () => console.error("Failed to preload logo image.");
-    };
-    preloadLogo();
-
     const tableContainer = document.getElementById("tableContainer");
     const invoiceTable = document.getElementById("invoiceTable");
     const totalAmount = document.getElementById("totalAmount");
     const btnPrint = document.getElementById("btnPrint");
+    const printSection = document.getElementById("printSection");
 
     function updateTotal() {
         let total = 0;
@@ -114,11 +105,7 @@
     }
 
     function toggleTableVisibility() {
-        if (invoiceTable.children.length > 0) {
-            tableContainer.style.display = "block";
-        } else {
-            tableContainer.style.display = "none";
-        }
+        tableContainer.style.display = invoiceTable.children.length > 0 ? "block" : "none";
     }
 
     document.getElementById("btnAdd").addEventListener("click", function () {
@@ -159,7 +146,8 @@
     });
 
     btnPrint.addEventListener("click", function () {
-        const invoiceDetails = ` <!DOCTYPE html>
+        // Generate the invoice content dynamically
+        const invoiceDetails = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -332,11 +320,17 @@
 </body>
 </html>`;
 
-        const printWindow = window.open("", "_blank");
-        printWindow.document.open();
-        printWindow.document.write(invoiceDetails);
-        printWindow.document.close();
-        printWindow.print();
+        // Update the printSection with the generated invoice content
+        printSection.innerHTML = invoiceDetails;
+
+        // Replace body content with print section content for printing
+        document.body.innerHTML = printSection.innerHTML;
+
+        // Trigger print dialog
+        window.print();
+
+        // Reload page to restore original content
+        location.reload();
     });
 </script>
 <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
